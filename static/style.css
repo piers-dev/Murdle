@@ -15,11 +15,16 @@ body {
 }
 .main {
 	width: 90vw;
-	justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	justify-items: center;
+	
 	padding: 2vh;
 	background-color: #202020e8;
 	border-radius: 0.5cm;
 	text-align: center;
+
 
 }
 .dateandtime {
@@ -60,6 +65,7 @@ a:hover, a:active {
 	background-color: rgb(38, 40, 47);
 	flex-wrap: wrap;
 	flex: 1 0 5%;
+	align-self: center;
 }
 
 #keyboard {
@@ -103,7 +109,6 @@ button:disabled {
 	color : #a7a7a7;
 }
 #player {
-	min-width: 200px;
-	max-width: 100%;
+	width: 15%;
 	padding: 0.8cm;
 }

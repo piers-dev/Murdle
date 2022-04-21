@@ -1,7 +1,7 @@
 
 # Start with a basic flask app webpage.
 from http.client import REQUEST_ENTITY_TOO_LARGE
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room
 from flask import Flask, jsonify, redirect, render_template, request, url_for, copy_current_request_context, session
 from random import random
 from time import sleep
@@ -9,12 +9,22 @@ from threading import Thread, Event
 import random
 import string
 from gameclass import *
+import uuid
 
 games = {}
 
 __author__ = 'Pixstatic'
 
 app = Flask(__name__)
+
+@app.before_request
+def register_session():
+    if 'id' in session.keys():
+        return
+    id = uuid.uuid4().hex
+    session['id'] = id
+        
+
 
 #turn the flask app into a socketio app
 socketio = SocketIO(app, async_mode=None, logger=True, engineio_logger=True)
@@ -61,21 +71,28 @@ def play(code):
     return render_template('game.html',code=code)
 
 @socketio.on('connect', namespace='/game')
-def connect(auth):
+def connection(msg={}):
     gc = session['code']
     if gc is not None:
         if gc in games.keys():
-            games[gc].players.append(player(request.sid,session['username'],session['email']))
+            if not session['id'] in games[gc].players.keys():
+                games[gc].addPlayer(request.sid,session['username'],session['email'],session['id'])
         else:
-            games[gc] = gamestate(request.sid,session['username'],session['email'])
-    emit('test',{'user':session["username"], 'email':session["email"], 'code': gc},room=request.sid)
-    print(auth)
+            games[gc] = gamestate()
+            games[gc].addPlayer(request.sid,session['username'],session['email'],session['id'])
+    print(games[gc].getPlayers())
+    join_room(session['code'])
+    emit('updatestate',{'state':games[gc].getPlayers()},room=session['code'])
 
     
 
 @socketio.on('disconnect', namespace='/game')
-def disconnect():
+def disconnection():
+    for player in games[session['code']].players:
+        if player['sid'] == request.sid:
+            del(player)
     print('Client disconnected')
+    emit('updatestate',{'state':games[gc].getPlayers()},room=session['code'])
 
 @socketio.on('guess', namespace='/game')
 def message(msg):
@@ -84,4 +101,5 @@ def message(msg):
 
 if __name__ == '__main__':
     app.secret_key = "vaD3pqokAMbqTvWOgGW7"
-    socketio.run(app)
+    socketio.run(app,host="0.0.0.0")
+

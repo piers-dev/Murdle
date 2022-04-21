@@ -5,8 +5,8 @@ function constructPlayer(data) {
     hash = md5(data.email)
     container.innerHTML = `
     <div id="pfp">
-    <img src="https://www.gravatar.com/avatar/${hash}?s=200&d=https://i.imgur.com/epuDxJh.png" style="width: 76px; height: 76px; border-radius: 50%;" id="avatar" ></div>
-    <div id="playername"><h1>${data.name}</h1></div>
+    <img src="https://www.gravatar.com/avatar/${hash}?s=200&d=https://i.imgur.com/epuDxJh.png" style="width: 50px; height: 50px; border-radius: 50%;" id="avatar" ></div>
+    <div id="playername" style="text-align: center;"><h3>${data.name}</h3></div>
     
     `;
     return container;
@@ -14,8 +14,8 @@ function constructPlayer(data) {
 
 function rendergame(state) {
     var game = document.getElementById("Game")
-    var teststate = [{name:"Chad Broski",email:"piersmbaker@icloud.com",word:"pingu",index:1},{name:"Jimongus",email:"jim@ongus.com",word:"among",index:2}]
-    teststate.forEach(player => {
+    game.innerHTML = "";
+    state.forEach(player => {
         
         game.appendChild(constructPlayer(player));
     });

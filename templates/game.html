@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Murdle {{code}}</title>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static',filename='js/rendergame.js') }}"></script>
+
+    <script src="{{ url_for('static',filename='js/md5.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/fetchgravatar.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/game.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/words.js') }}"></script>
+</head>
+
+<body>
+    
+        <div id="title"><img src="{{ url_for('static',filename='murdle.png') }}" style="width: auto; height: 10vh;" alt="Murdle"></div>
+            
+        <div class="main">
+
+            <script>
+
+                
+                function greyOut(text) {
+                    document.getElementById('submit').disabled = !checkWord(text);
+                }
+            </script>
+            <div id="guessfields" hidden="true">
+                <input type="text" placeholder="GUESS" pattern="[a-zA-Z]*" id="guess" maxlength="5" style="
+                    width: 50vw;
+                    max-width: 6cm;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    border: 0px;
+                    box-sizing: border-box;
+                    font-size: 3vw;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                " onkeyup="greyOut(this.value)" >
+                
+                <input type="submit" value="Submit" id="submit" style="
+                    width: 20vw;
+                    max-width: 6cm;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    border: 0px;
+                    box-sizing: border-box;
+                    font-size: 3vw;
+                    
+                    
+                    
+                    border-bottom-right-radius: 10px;
+                    border-top-right-radius: 10px;
+                " disabled="true">
+            </div>
+            <br>
+            
+            
+
+            <div id="Game"></div>
+            
+            
+            
+            
+            
+        </div>
+        
+        
+    <h1 style="color: white">{{ code }}</h1>
+	<button id="test" onclick="rendergame('blah')">TEST</button>
+
+    
+</body>
+
+</html>

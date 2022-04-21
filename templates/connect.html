@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Murdle {{code}}</title>
+    <script src="{{ url_for('static',filename='js/md5.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/fetchgravatar.js') }}"></script>
+</head>
+
+<body>
+    
+        <div id="title"><img src="{{ url_for('static',filename='murdle.png') }}" style="width: 400px; height: auto;" alt="Murdle">
+        <br><h3 style="color: red;">{{ error }}</h3>
+        </div>
+            
+        <div class="main">
+            
+            <h2 style="color: lightgray">Joining Game {{code}}</h2>
+            <p>
+                <form action="/play/{{code}}">
+                    <input type="text" placeholder="Nickname" id="username" name="user" style="
+                        width: 50%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        border: 0px;
+                        box-sizing: border-box;
+                        font-size: large;
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                    ">
+                    
+                    <input type="submit" value="Join!" id="submit" style="
+                        width: 20%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        border: 0px;
+                        box-sizing: border-box;
+                        font-size: large;
+                        border-bottom-right-radius: 10px;
+                        border-top-right-radius: 10px;
+                    "><br>
+                    <input type="text" placeholder="Gravatar Email (optional)" id="gravatar" onChange="updateAvatar(this.value);" name="email" style="
+                        width: 50%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        border: 0px;
+                        box-sizing: border-box;
+                        font-size: large;
+                        border-radius: 10px;
+                    "><br>
+                    <img src="https://i.imgur.com/epuDxJh.png" style="
+                        width: 128px;
+                        height: 128px;
+                        border-radius: 50%;
+                    " id="avatar" >
+                    
+
+                </form>
+            </p>
+            
+            
+            
+            
+    
+
+    
+</body>
+
+</html>

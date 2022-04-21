@@ -1,0 +1,109 @@
+body {
+	background-color: #222222;
+	background-image: url(/static/creepy.jpeg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: rgb(224, 224, 224);
+	font-family: "Arial";
+	display: flex;
+	flex-direction: column;
+	padding-top: 1vh;
+	justify-content: flex-start;
+	align-items: center;
+}
+.main {
+	width: 90vw;
+	justify-content: flex-start;
+	padding: 2vh;
+	background-color: #202020e8;
+	border-radius: 0.5cm;
+	text-align: center;
+
+}
+.dateandtime {
+	width: 80%;
+	padding: 5%;
+	background-color: #202020e8;
+	border-radius: 0.5cm;
+}
+a:link, a:visited {
+	background-color: #818181;
+	color: white;
+	padding: 15px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 0.5cm;
+}
+
+a:hover, a:active {
+  	background-color: rgb(97, 97, 97);
+}
+#title {
+	justify-content: flex-start;
+	text-align: center;
+  
+  
+}
+
+#Game {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	overflow-y: auto;
+	width: 95%;
+	height: 63vh;
+	padding: 1vh;
+	border-radius: 0.5cm;
+	background-color: rgb(38, 40, 47);
+	flex-wrap: wrap;
+	flex: 1 0 5%;
+}
+
+#keyboard {
+	margin: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #222222;
+	padding: 0.5%;
+	border-radius: 0.25cm;
+}
+
+#keyboard div {
+  	display: flex;
+}
+
+.second-row {
+  	margin: 0.5rem 0;
+}
+
+.keyboard-button {
+	font-size: 1rem;
+	min-width: 6vh;
+	height: 6vh;
+	font-weight: 700;
+	padding: 0.5rem;
+	margin: 0 2px;
+	border-radius: 6px;
+	border: 0px;
+	cursor: pointer;
+	text-transform: uppercase;
+	background-color: rgb(38, 40, 47);
+	color: white;
+}
+button:enabled {
+	background-color: rgb(49, 255, 49);
+	color: white;
+}
+button:disabled {
+	background: #1c1c1c;
+	color : #a7a7a7;
+}
+#player {
+	min-width: 200px;
+	max-width: 100%;
+	padding: 0.8cm;
+}

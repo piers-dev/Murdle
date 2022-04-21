@@ -92,7 +92,7 @@ def disconnection():
         if player['sid'] == request.sid:
             del(player)
     print('Client disconnected')
-    emit('updatestate',{'state':games[gc].getPlayers()},room=session['code'])
+    emit('updatestate',{'state':games[session['code']].getPlayers()},room=session['code'])
 
 @socketio.on('guess', namespace='/game')
 def message(msg):
@@ -101,5 +101,5 @@ def message(msg):
 
 if __name__ == '__main__':
     app.secret_key = "vaD3pqokAMbqTvWOgGW7"
-    socketio.run(app,host="0.0.0.0")
+    socketio.run(app,host="0.0.0.0",port=8000)
 

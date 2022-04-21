@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e326d566-f015-43d3-a1f2-642ac29746d2/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/murdle",
+    "appService.deploySubpath": "."
+}

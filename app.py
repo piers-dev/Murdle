@@ -16,6 +16,7 @@ games = {}
 __author__ = 'Pixstatic'
 
 app = Flask(__name__)
+app.secret_key = "vaD3pqokAMbqTvWOgGW7"
 
 @app.before_request
 def register_session():
@@ -100,6 +101,6 @@ def message(msg):
 
 
 if __name__ == '__main__':
-    app.secret_key = "vaD3pqokAMbqTvWOgGW7"
+    
     socketio.run(app,host="0.0.0.0",port=8000)
 

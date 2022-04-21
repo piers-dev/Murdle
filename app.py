@@ -16,7 +16,6 @@ games = {}
 __author__ = 'Pixstatic'
 
 app = Flask(__name__)
-app.secret_key = "vaD3pqokAMbqTvWOgGW7"
 
 @app.before_request
 def register_session():
